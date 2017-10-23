@@ -23,25 +23,55 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import AppContentView from './components/appcontent.vue';
-import NavigationView from './components/navigation.vue';
-import store from './store';
+Vue.use(Vuex);
 
-export class App {
-	start() {
-		Vue.mixin({
-			t: str => t('mail', str)
-		});
-
-		let appView = new Vue({
-			el: "#app",
-			store,
-			components: {
-				'nc-app-content': AppContentView,
-				'nc-app-navigation': NavigationView
-			}
-		});
-
-		store.dispatch('loadAccounts');
+export default new Vuex.Store({
+	state: {
+		accounts: [],
+		count: 0
+	},
+	mutations: {
+		setAccounts(state, payload) {
+			state.accounts = payload.accounts;
+		}
+	},
+	actions: {
+		loadAccounts( {commit}) {
+			return new Promise(function(resolve) {
+				setTimeout(function( ) {
+					commit('setAccounts', {
+						accounts: [
+							{
+								id: 1,
+								email: 'account1@domain.tld',
+								folders: [
+									{
+										name: 'folder1'
+									},
+									{
+										name: 'folder2'
+									}
+								]
+							},
+							{
+								id: 2,
+								email: 'account2@domaint.dl',
+								folders: [
+									{
+										name: 'folder1'
+									},
+									{
+										name: 'folder2'
+									},
+									{
+										name: 'folder3'
+									}
+								]
+							}
+						]});
+					resolve();
+				}, 1000);
+			});
+		}
 	}
-}
+});
