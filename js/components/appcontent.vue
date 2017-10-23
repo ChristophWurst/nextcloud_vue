@@ -8,10 +8,12 @@
 
 <script>
 		import HelloView from "./hello.vue";
+		import L10nView from "./l10n.vue";
 
 		export default {
 			components: {
-				hello: HelloView
+				hello: HelloView,
+				t: L10nView
 			}
 		}
 </script>

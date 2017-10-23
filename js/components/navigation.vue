@@ -1,14 +1,32 @@
 <template>
 	<div id="app-navigation">
 		<ul>
-			<li><a href="#">First level entry</a></li>
-			<li>
-				<a href="#">First level container</a>
-				<ul>
-					<li><a href="#">Second level entry</a></li>
-					<li><a href="#">Second level entry</a></li>
-				</ul>
-			</li>
+			<template v-for="account in accounts">
+				<li>
+					<a href="#">{{ account.email }}</a>
+				</li>
+				<template >
+					<li v-for="folder in account.folders">
+						<a href="#">{{ folder.name }}</a>
+					</li>
+				</template>
+			</template>
 		</ul>
+		<app-settings></app-settings>
 	</div>
 </template>
+
+<script>
+		import { mapState } from 'vuex';
+
+		import AppSettingsView from './appsettings.vue';
+
+		export default {
+			computed: mapState([
+				'accounts'
+			]),
+			components: {
+				'app-settings': AppSettingsView
+			}
+		};
+</script>
