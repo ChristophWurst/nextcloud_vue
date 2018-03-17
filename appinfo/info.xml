@@ -9,7 +9,7 @@
 	<author>Christoph Wurst</author>
 	<namespace>Vue</namespace>
 	<dependencies>
-		<php min-version="7.0" max-version="7.1" />
+		<php min-version="7.0" max-version="7.2" />
 		<nextcloud min-version="14" max-version="14" />
 	</dependencies>
 </info>
