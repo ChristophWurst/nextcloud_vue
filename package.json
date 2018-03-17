@@ -5,8 +5,8 @@
   "author": "Christoph Wurst <christoph@winzerhof-wurst.at>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "cross-env NODE_ENV=development webpack-cli --watch",
+    "build": "cross-env NODE_ENV=production webpack-cli --progress --hide-modules"
   },
   "dependencies": {
     "vue": "^2.5.15",
@@ -22,7 +22,6 @@
     "vue-loader": "^14.2.1",
     "vue-template-compiler": "^2.5.15",
     "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.11",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-cli": "^2.0.11"
   }
 }
